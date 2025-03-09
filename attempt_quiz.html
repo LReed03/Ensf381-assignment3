@@ -1,61 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attempt Quiz - LMS</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <img src="logo.jpg" alt="LMS Logo" style="width: 100px; height: 100px;">
-        <h1>LMS - Learning Management System</h1>
+        <img src="logo.jpg" height="100px" width="100px" alt="'logo">
+        <h1 class="header-title">LMS - Learning Management System</h1>
     </header>
-    <div>
-        <nav>
-            <a href="index.html">Homepage</a>
-            <a href="course_view.html">Courses</a> 
-        </nav>
+    <div class="navigation-bar">
+        <a href="index.html" class="navigation-bar-item">Homepage</a><small><b> | </b></small>
+        <a href="course_view.html" class="navigation-bar-item">Courses</a>
     </div>
-    <main class="attemptquiz">
-        <img src="banner.jpg" alt="Quiz Banner" style="width: 100%;">
-        <div class="quizdetails">
+    <main>
+        <h2 class="page-title">LMS - Attempt Quiz</h2>
+        <img src="banner.jpg" alt="Banner" class="banner">
+        <div class="quiz-info">
             <h2>Course Name: Web Development</h2>
             <h2>Course Code: WD381</h2>
             <p>Topic: HTML Basics</p>
             <p>Deadline: 11:59 PM, February 10, 2025</p>
             <p>Attempts Allowed: 1</p>
         </div>
-        
-        <h3>Question 1</h3>
-        <p>What does HTML stand for?</p>
-        <div class="Qs">
-            <input type="radio" id="q1a" name="q1" value="Hyper Text Markup Language">
-            <label for="q1a">Hyper Text Markup Language</label><br>
-            <input type="radio" id="q1b" name="q1" value="Home Tool Markup Language">
-            <label for="q1b">Home Tool Markup Language</label><br>
+        <h3  class="question">Question 1</h3>
+        <form>
+            <table class="form-table">
+                <tr>
+                    <td class="question">
+                        <label for="question1">What does HTML stand for?</label><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="choice-button-1">
+                        <input type="radio" id="answer1" name="question1" value="Hyper Text Markup Language">
+                        <label for="answer1">Hyper Text Markup Language</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="choice-button-2">   
+                        <input type="radio" id="answer2" name="question1" value="Home Tool Markup Language">
+                        <label for="answer2">Home Tool Markup Language</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="submit-table-data">
+                        <input class="submit-button" type="button" value="Submit" name="question1">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <h3  class="question">Question 2</h3>
+        <form>
+            <table class="form-table">
+                <tr>
+                    <td class="question">
+                        <label for="question2">Which of the following are HTML elements? (Select all that apply)</label><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="choice-button-1">
+                        <input type="checkbox" id="answer1" name="question2" value="Hyper Text Markup Language">
+                        <label for="answer1">&lt;div&gt;</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="choice-button-2">
+                        <input type="checkbox" id="answer2" name="question2" value="Home Tool Markup Language">
+                        <label for="answer2">&lt;span&gt;</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="submit-table-data">
+                        <input class="submit-button" type="button" value="Submit" name="question2">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="finish-quiz">
+            <a href="leaderboard.html">
+                <button>Finish Quiz</button>
+            </a>
         </div>
-        <br>
-        <button class="ans">Submit Answer</button>
-        
-        <h3>Question 2</h3>
-        <p>Which of the following are HTML elements? (Select all that apply)</p>
-        <div class="Qs">
-        <input type="checkbox" id="q2a" name="q2" value="<div>">
-        <label for="q2a">&lt;div&gt;</label><br>
-        <input type="checkbox" id="q2b" name="q2" value="<span>">
-        <label for="q2b">&lt;span&gt;</label><br>
-        </div>
-        <br>
-        <button class="ans">Submit Answer</button>
-        
-        <br><br>
-        <a href="leaderboard.html">
-            <button class="FinQz">Finish Quiz</button>
-        </a>
     </main>
     <footer>
-        <p>&copy; 2025 LMS. All rights reserved.</p>
+        © 2025 LMS. All rights reserved.
     </footer>
+
 </body>
-</html>

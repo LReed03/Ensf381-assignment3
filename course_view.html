@@ -1,120 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course View - LMS</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Course View</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <img src="logo.jpg" alt="LMS Logo" style="width: 100px; height: 100px;">
-        <h1>LMS - Learning Management System</h1>
+        <img src="logo.jpg" height="100px" width="100px" alt="'logo">
+        <h1 class="header-title">LMS - Learning Management System</h1>
     </header>
-    <div>
-        <nav>
-            <a href="index.html">Homepage</a>
-        </nav>
+    <div class="navigation-bar">
+        <u><a href="index.html" class="navigation-bar-item">Homepage</a></u>
     </div>
-    
-    <main class="courseview">
-        <label for="term">Select Term:</label>
-        <select id="term" name="term">
-            <option value="Winter 2025">Winter 2025</option>
-            <option value="Winter 2024">Winter 2024</option>
-            <option value="Fall 2025">Fall 2025</option>
-            <option value="Fall 2024">Fall 2024</option>
-        </select>
-        
-        <section class="Enrolled">
-			<!-- Courses in which the student is enrolled -->
-            <!-- Display Course 1, 2, and 3 in the same line -->
-            <h2>Enrolled Courses</h2>
+    <main>
+    <form class="term">
+            <br>
+            <label for="term">Select Term:</label>
+            <select id="term" name="term">
+                <option value="winter2025">Winter 2025</option>
+                <option value="fall2024">Fall 2024</option>
+                <option value="winter2024">Winter 2024</option>
+                <option value="fall2023">Fall 2023</option>
+            </select>
+    </form> 
+    <div>
+            <h2 class="page-title">
+                Enrolled Courses
+            </h2>
+            <table border="0" class="table-container">
+                <tr>
+                    <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: Web Development<br>
+                            Course Code: WD381<br>
+                            <u><a href="attempt_quiz.html">Attempt quiz</a></u>
+                        </td>
+                    <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: Data Structures<br>
+                            Course Code: DS371<br>
+                            <u><a href="attempt_quiz.html">Attempt quiz</a></u>
+                        </p>
+                    </td>
+                    <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: DBMS<br>
+                            Course Code: DB346<br>
+                            <u><a href="attempt_quiz.html">Attempt quiz</a></u>
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: Software Testing<br>
+                            Course Code: ST484<br>
+                            <u><a href="attempt_quiz.html">Attempt quiz</a></u>
+                        </p>
+                    </td>
+                    <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: Software Architectures<br>
+                            Course Code: SA396<br>
+                            <u><a href="attempt_quiz.html">Attempt quiz</a></u>
+                        </p>
+                    </td>
+                </tr>
+                
+            </table>
+    </div>
+    <div>
+            <br><br>
+            <h2 class="page-title">
+                Pending Invitations
+            </h2>
             <hr>
-            <table class="cv">
-				<tr>
-					<td>
-						<div>
-                            <img src="course1.jpg" alt="Course 1">
-                            <p>Course Name: Web Development</p>
-                            <p>Course Code: WD381</p>
-                            <a href="attempt_quiz.html">Attempt Quiz</a>
-                        </div>
-					</td>
-					<td>
-						<div>
-                            <img src="course1.jpg" alt="Course 1">
-                            <p>Course Name: Data Structures</p>
-                            <p>Course Code: DS371</p>
-                            <a href="attempt_quiz.html">Attempt Quiz</a>
-                        </div>
-					</td>
-                    <td>
-						<div>
-                            <img src="course1.jpg" alt="Course 1">
-                            <p>Course Name: Database Systems</p>
-                            <p>Course Code: DB346</p>
-                            <a href="attempt_quiz.html">Attempt Quiz</a>
-                        </div>
-					</td>
-				</tr>
-				<!-- Display Course 4 and 5 in the same line -->
-				<tr>
-					<td>
-						<div>
-                            <img src="course1.jpg" alt="Course 1">
-                            <p>Course Name: Software Testing</p>
-                            <p>Course Code: ST484</p>
-                            <a href="attempt_quiz.html">Attempt Quiz</a>
-                        </div>
-					</td>
-					<td>
-						<div>
-                            <img src="course1.jpg" alt="Course 1">
-                            <p>Course Name: Software Architectures</p>
-                            <p>Course Code: SA396</p>
-                            <a href="attempt_quiz.html">Attempt Quiz</a>
-                        </div>
-					</td>
-				</tr>
-            </table> 
-        </section>
-        
-        <div>
-        </div>
-        <br>
-        <br>
-        <section class="Pending">
-			<!-- Courses in which the student is enrolled -->
-            <!-- Display Course 1, 2, and 3 in the same line -->
-            <h2>Pending Invitations</h2>
-            <hr>
-            <table class="cv">
-				<tr>
-					<td>
-                        <div>
-                            <img src="course2.jpg" alt="Course 2">
-                            <p>Course Name: Data Science</p>
-                            <p>Course Code: DS102</p>
-                            <button class="accept">Accept</button>
-                            <button class="decline">Decline</button>
-                        </div>
-                    </td> 
-                    <td>
-                        <div>
-                            <img src="course2.jpg" alt="Course 2">
-                            <p>Course Name: Machine Learning</p>
-                            <p>Course Code: ML105</p>
-                            <button class="accept">Accept</button>
-                            <button class="decline">Decline</button>
-                        </div>
-                    </td> 
+            <table border="0" class="table-container">
+                <tr>
+                    <td width="50%" class="class-table"><img src="course2.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: Data Science<br>
+                            Course Code: DS102<br>
+                            <button type="accept" class="accept-button">Accept</button>
+                            <button type="decline" class="decline-button">Decline</button>
+                        </p>
+                    </td>
+                    <td width="50%" class="class-table"><img src="course2.jpg" width="100%" height="100%">
+                        <p>
+                            Course Name: Machine Learning<br>
+                            Course Code: ML105<br>
+                            <button type="accept" class="accept-button">Accept</button>
+                            <button type="decline" class="decline-button">Decline</button>
+                        </p>
+                    </td>
                 </tr>
             </table>
-        </section>
-    </main>
+    </div>
     <footer>
-        <p>&copy; 2025 LMS. All rights reserved.</p>
+            © 2025 LMS. All rights reserved.
     </footer>
+    </main>
 </body>
-</html>
