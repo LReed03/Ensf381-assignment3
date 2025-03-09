@@ -91,18 +91,20 @@ ul{
 }
 
 .signup-button{
-    background-color: #008000;
+    background-color: #4CAF50;
     color: white;
     text-align: center;
     border-radius: 5px;
     border: none;
     padding: 10px;
-    margin: 20px;
+    margin: 10px;
+    opacity: 0.5;
   
 }
 
 .signup-button:hover{
-    background-color: #006600;
+    background-color: #45A049;
+    opacity: 1.0;
 }
 
 
