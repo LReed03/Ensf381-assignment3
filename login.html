@@ -60,8 +60,14 @@
     }
 
     function message(message){
+        var existingBox = document.getElementById('dynamicBox');
+        
+        if(existingBox){
+            return
+        }
+
         var dynamicBox = document.createElement("div");
-        dynamicBox.className = "dynamicBox";
+        dynamicBox.id = "dynamicBox";
         dynamicBox.textContent = message;
         var container = document.getElementById('dynamicbox-container')
         container.appendChild(dynamicBox);
