@@ -143,6 +143,14 @@ ul{
     margin: 12px;
 }
 
+.dynamicBox{
+    padding: 20px;
+    text-align: center;
+    border-color: gray;
+}
+
+
+
 .signup{
     background-color: #d4d4d4;
     display: flex;

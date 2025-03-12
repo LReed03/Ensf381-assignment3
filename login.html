@@ -48,14 +48,23 @@
         let valid = validate()
         if(valid){
             console.log("Login successful, redirecting...");
+            message("")
             setTimeout(() => {
                 window.location.href = "course_view.html"; 
             }, 2000);
+            
         }
         else{
-            
-            alert("Invalid username or password. Please try again.");
+            message("Invalid username or password!")
         }
+    }
+
+    function message(message){
+        var dynamicBox = document.createElement("div");
+        dynamicBox.className = "dynamicBox";
+        dynamicBox.textContent = message;
+        var container = document.getElementById('dynamicbox-container')
+        container.appendChild(dynamicBox);
     }
     
     
@@ -94,6 +103,9 @@
             <a href="" id="forgot-password">Forgot Password?</a>
             <br>
             <a href="Signup.html" id="forgot-password">Don't have an account? Sign Up</a>
+        </div>
+        <div id="dynamicbox-container">
+
         </div>
     </main>
     <footer>
