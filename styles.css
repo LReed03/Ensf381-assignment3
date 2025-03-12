@@ -144,9 +144,12 @@ ul{
 }
 
 #dynamicBox{
-    padding: 20px;
+    padding: 15px;
     text-align: center;
-    border-color: gray;
+    border: 2px solid gray;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 15px;
 }
 
 
