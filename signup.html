@@ -6,13 +6,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <script>
+    let usernameErrors = [];
+    let passwordErrors = [];
+    let emailErrors = [];
+
     function validateUserName(){
         let username = document.getElementById('username').value;
-        let usernameRegex = /^[a-zA-Z][a-zA-Z0-9_-]{2,19}$/
+        let usernameRegex = /^[a-zA-Z][a-zA-Z0-9_-]{2,19}$/;
+        usernameErrors = [];
         if(usernameRegex.test(username)){
             return true;
         }
         else{
+            let usernameLengthRegex = /^.{3,20}$/;
+            let allowedCharRegex = /^[a-zA-Z0-9_-]+$/;
+            let letterStartRegex = /^[a-zA-Z]/;
+            let noSpaces = /^\S+$/;
+            if(!usernameLengthRegex.test(username)){
+                usernameErrors.push("Username must be between 3 and 20 characters");
+            }
+
+            if(!allowedCharRegex.test(username)) {
+                usernameErrors.push("Username must only contain letters, numbers, hyphens (-), and underscores (_)");
+            }
+            if(!letterStartRegex.test(username)){
+                usernameErrors.push("Username must start with a letter")
+            }
+            if(!noSpaces.test(username)){
+                usernameErrors.push("Username cannot contain spaces")
+            }
             return false;
         }
 
@@ -24,10 +46,35 @@
     function validatePassword(){
         let password = document.getElementById('password').value;
         let passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-=+\[\]{};:'",.<>?/~])(?!.* ).{8,}$/;
+        passwordErrors = []
         if(passwordRegex.test(password)){
             return true;
         }
         else{
+            let passwordLengthRegex = /^.{8,}$/;
+            let specialCharRegex =/(?=.*[!@#$%^&*()\-=+\[\]{};:'",.<>?/~])/;
+            let numberRegex = /(?=.*[0-9])/;
+            let capitalRegex = /(?=.*[A-Z])/;
+            let lowercaseRegex = /(?=.*[a-z])/;
+            let noSpaces = /^\S+$/;
+            if(!passwordLengthRegex.test(password)){
+                passwordErrors.push("Must be at least 8 characters long")
+            }
+            if(!specialCharRegex.test(password)){
+                passwordErrors.push("Must contain at least 1 special character")
+            }
+            if(!numberRegex.test(password)){
+                passwordErrors.push("Must contain at least 1 number")
+            }
+            if(!capitalRegex.test(password)){
+                passwordErrors.push("Must contain at least 1 capital letter")
+            }
+            if(!lowercaseRegex.test(password)){
+                passwordErrors.push("Must contain at least 1 lowercase letter")
+            }
+            if(!noSpaces.test(password)){
+                passwordErrors.push("Cannot contain spaces")
+            }
             return false;
         }
 
@@ -48,10 +95,20 @@
     function validateEmail(){
         let email = document.getElementById('email').value;
         let emailRegex = /^(?!.* )[a-zA-Z0-9]+@[a-zA-Z0-9]+\.(com|net|ca|io)$/;
+        emailErrors = [];
         if(emailRegex.test(email)){
             return true;
         }
         else{
+            emailErrors.push("Must be a valid email address forrmat (e.g. username@example.com)")
+            let noSpaces = /^\S+$/;
+            let containsAt = /@/
+            if(!noSpaces.test(email)){
+                emailErrors.push("Cannot contain spaces")
+            }
+            if(!containsAt.test(email)){
+                emailErrors.push("Must contain the @ symbol")
+            }
             return false;
         }
     }
@@ -60,7 +117,7 @@
         var existingBox = document.getElementById('dynamicBox');
 
         if(existingBox){
-            existingBox.textContent = message;
+            existingBox.remove();
         }
 
         var dynamicBox = document.createElement("div");
@@ -70,9 +127,77 @@
         container.appendChild(dynamicBox);
     }
 
-    function signup(){
-        let errors = [];
+    function errorMessage(){
+        var existingBox = document.getElementById('dynamicBox');
 
+        if(existingBox){
+            existingBox.remove();
+        }
+
+        var dynamicBox = document.createElement("div");
+        dynamicBox.id = "dynamicBox";
+        var container = document.getElementById('dynamicbox-container');
+        container.appendChild(dynamicBox);
+        var usernameError = document.createElement("div");
+        var passwordError = document.createElement("div");
+        var confirmPasswordError = document.createElement("div");
+        var emailError = document.createElement("div");
+        dynamicBox.appendChild(usernameError);
+        dynamicBox.appendChild(passwordError);
+        dynamicBox.appendChild(confirmPasswordError);
+        dynamicBox.appendChild(emailError);
+        if(validateUserName()){
+            usernameError.textContent = "Valid Username"
+        }
+        if(validatePassword()){
+            passwordError.textContent = "Valid password"
+        }
+        if(validateConfirmPassword()){
+            confirmPasswordError.textContent = "Passwords Match"
+        }
+        if(validateEmail()){
+            emailError.textContent = "Valid Username"
+        }
+        if(!validateUserName()){
+            usernameError.textContent = "Invalid Username ("
+            for(i = 0; i < usernameErrors.length; i++){
+                usernameError.append(usernameErrors[i]);
+                if(i != usernameErrors.length - 1){
+                    usernameError.append(", ")
+                }
+            }
+            usernameError.append(")");
+        }
+        if(!validatePassword()){
+            passwordError.textContent = "Invalid Password ("
+            for(i = 0; i < passwordErrors.length; i++){
+                passwordError.append(passwordErrors[i])
+                if( i != passwordErrors.length - 1){
+                    passwordError.append(", ")
+                }
+            }
+            passwordError.append(")")
+        }
+        if(!validateConfirmPassword()){
+            confirmPasswordError.textContent = "Passwords Do Not Match"
+        }
+        if(!validateEmail()){
+            emailError.textContent = "Invalid email ("
+            for(i = 0; i < emailErrors.length; i++){
+                emailError.append(emailErrors[i]);
+                if( i != emailErrors.length - 1){
+                    emailError.append(", ")
+                }
+            }
+            emailError.append(")");
+            
+        }
+
+
+
+    }
+
+    function signup(){
         let usernameValid = validateUserName();
         let passwordValid = validatePassword();
         let confirmPasswordValid = validateConfirmPassword();
@@ -86,7 +211,7 @@
 
         }
         else{
-            console.log("Wrong")
+            errorMessage();
         }
     }
 
