@@ -3,6 +3,78 @@
     <title>Attempt Quiz - LMS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+    let time = 600;
+
+    let marks = 0;
+
+    function timing() {
+        const timer = document.getElementById('timer');
+        time--;
+        let minutes = time / 60;
+        minutes = minutes - minutes % 1;
+        let seconds = time - minutes * 60;
+        if (minutes == 0) {
+            timer.textContent = (seconds < 10) ? 'Time Remaining: ' + '0' + ':' + '0' + seconds: 'Time Remaining: ' + minutes + ':' + seconds;
+        } else {
+            timer.textContent = (seconds < 10) ? 'Time Remaining: ' + minutes + ':' + '0' + seconds: 'Time Remaining: ' + minutes + ':' + seconds;
+        }
+        if (time == 0) {
+            window.location.href = 'leaderboard.html'
+        }
+    }
+
+let correct = 0;
+
+    function checkQ1() {
+        const answer1 = document.getElementById('q1answer1').checked;
+        const answer2 = document.getElementById('q1answer2').checked;
+
+        const finalMark = document.getElementById('finalMark');
+
+
+        if (!correct) {
+            if (answer1) {
+                marks = marks + 50;
+                finalMark.textContent = 'Final Mark: ' + marks + ' / 100';
+                correct++;
+            } else if (answer2) {
+                alert('This answer is incorrect.');
+            } else {
+                alert('This answer is incomplete.');
+            }
+        }
+    }
+
+let q1 = 0;
+let q2 = 0;
+
+    function checkQ2() {
+        const answer1 = document.getElementById('q2answer1').checked;
+        const answer2 = document.getElementById('q2answer2').checked;
+
+        const finalMark = document.getElementById('finalMark');
+
+        if (!q1) {
+            if (answer1) {
+                marks = marks + 25;
+                q1++;
+            }
+        }
+        if (!q2) {    
+            if (answer2) {
+                marks = marks + 25;
+                q2++;
+            }
+        }
+        if (!answer1 || !answer2) {
+            alert('This answer is incorrect.')
+        }
+        finalMark.textContent = 'Final Mark: ' + marks + ' / 100';
+    }
+
+    setInterval(timing, 1000);
+</script>
 <body>
     <header>
         <img src="logo.jpg" height="100px" width="100px" alt="'logo">
@@ -21,6 +93,8 @@
             <p>Topic: HTML Basics</p>
             <p>Deadline: 11:59 PM, February 10, 2025</p>
             <p>Attempts Allowed: 1</p>
+            <p id="timer">Time Remaining: 10:00</p>
+            <p id="finalMark">Final mark: 0 / 100</p>
         </div>
         <h3  class="question">Question 1</h3>
         <form>
@@ -32,19 +106,19 @@
                 </tr>
                 <tr>
                     <td class="choice-button-1">
-                        <input type="radio" id="answer1" name="question1" value="Hyper Text Markup Language">
+                        <input type="radio" id="q1answer1" name="question1" value="Hyper Text Markup Language">
                         <label for="answer1">Hyper Text Markup Language</label>
                     </td>
                 </tr>
                 <tr>
                     <td class="choice-button-2">   
-                        <input type="radio" id="answer2" name="question1" value="Home Tool Markup Language">
+                        <input type="radio" id="q1answer2" name="question1" value="Home Tool Markup Language">
                         <label for="answer2">Home Tool Markup Language</label>
                     </td>
                 </tr>
                 <tr>
                     <td class="submit-table-data">
-                        <input class="submit-button" type="button" value="Submit" name="question1">
+                        <input class="submit-button" type="button" value="Submit" name="question1" onclick="checkQ1()">
                     </td>
                 </tr>
             </table>
@@ -59,19 +133,19 @@
                 </tr>
                 <tr>
                     <td class="choice-button-1">
-                        <input type="checkbox" id="answer1" name="question2" value="Hyper Text Markup Language">
+                        <input type="checkbox" id="q2answer1" name="question2" value="div">
                         <label for="answer1">&lt;div&gt;</label>
                     </td>
                 </tr>
                 <tr>
                     <td class="choice-button-2">
-                        <input type="checkbox" id="answer2" name="question2" value="Home Tool Markup Language">
+                        <input type="checkbox" id="q2answer2" name="question2" value="span">
                         <label for="answer2">&lt;span&gt;</label>
                     </td>
                 </tr>
                 <tr>
                     <td class="submit-table-data">
-                        <input class="submit-button" type="button" value="Submit" name="question2">
+                        <input class="submit-button" type="button" value="Submit" name="question2" onclick="checkQ2()">
                     </td>
                 </tr>
             </table>

@@ -190,6 +190,10 @@ ul{
     padding: 20px;
 }
 
+.class-table:hover{
+    background-color:#ffffff;
+}
+
 .table-container{
     margin: 15px;
 }

@@ -3,6 +3,41 @@
     <title>Course View</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+    function accept(id) {
+        const classToAccept = document.getElementById('pendingClass' + id);
+        const acceptTable = document.getElementById('accepted');
+        const pendingTable = document.getElementById("pending");
+        const acceptButton = document.getElementById('accept' + id);
+        const declineButton = document.getElementById('decline' + id);
+        pendingTable.rows[0].removeChild(classToAccept);
+        console.log(acceptButton)
+        classToAccept.firstChild.src = "course1.jpg";
+        classToAccept.width = "33.3%";
+        classToAccept.childNodes[2].removeChild(acceptButton);
+        classToAccept.childNodes[2].removeChild(declineButton);
+        const us = document.createElement('u');
+        const link = document.createElement('a');
+        link.setAttribute('href', 'attempt_quiz.html');
+        link.textContent = 'Attempt quiz';
+        us.appendChild(link);
+        classToAccept.childNodes[2].appendChild(us);
+        console.log(classToAccept)
+        if (acceptTable.rows[1].cells.length < 3) {
+            acceptTable.rows[1].appendChild(classToAccept);
+        } else {
+            acceptTable.insertRow();
+            acceptTable.rows[2].appendChild(classToAccept);
+        }
+    }
+
+    function decline(id) {
+        const classToDecline = document.getElementById('pendingClass' + id);
+        const pendingTable = document.getElementById("pending");
+        pendingTable.rows[0].removeChild(classToDecline);
+    }
+
+</script>
 <body>
     <header>
         <img src="logo.jpg" height="100px" width="100px" alt="'logo">
@@ -26,7 +61,7 @@
             <h2 class="page-title">
                 Enrolled Courses
             </h2>
-            <table border="0" class="table-container">
+            <table border="0" class="table-container" id="accepted">
                 <tr>
                     <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
                         <p>
@@ -50,7 +85,7 @@
                     </td>
 
                 </tr>
-                <tr>
+                <tr id="row2">
                     <td width="33.3%" class="class-table"><img src="course1.jpg" width="100%" height="100%">
                         <p>
                             Course Name: Software Testing<br>
@@ -75,22 +110,22 @@
                 Pending Invitations
             </h2>
             <hr>
-            <table border="0" class="table-container">
+            <table border="0" class="table-container" id="pending">
                 <tr>
-                    <td width="50%" class="class-table"><img src="course2.jpg" width="100%" height="100%">
+                    <td width="50%" class="class-table" id="pendingClass1"><img src="course2.jpg" width="100%" height="100%">
                         <p>
                             Course Name: Data Science<br>
                             Course Code: DS102<br>
-                            <button type="accept" class="accept-button">Accept</button>
-                            <button type="decline" class="decline-button">Decline</button>
+                            <button type="accept" class="accept-button" id="accept1" onclick="accept('1')">Accept</button>
+                            <button type="decline" class="decline-button" id="decline1" onclick="decline('1')">Decline</button>
                         </p>
                     </td>
-                    <td width="50%" class="class-table"><img src="course2.jpg" width="100%" height="100%">
+                    <td width="50%" class="class-table" id="pendingClass2"><img src="course2.jpg" width="100%" height="100%">
                         <p>
                             Course Name: Machine Learning<br>
                             Course Code: ML105<br>
-                            <button type="accept" class="accept-button">Accept</button>
-                            <button type="decline" class="decline-button">Decline</button>
+                            <button type="accept" class="accept-button" onclick="accept('2')" id="accept2">Accept</button>
+                            <button type="decline" class="decline-button" onclick="decline('2')" id="decline2">Decline</button>
                         </p>
                     </td>
                 </tr>
